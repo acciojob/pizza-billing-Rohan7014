@@ -40,10 +40,20 @@ public class Pizza {
         }
     }
     public void addExtraToppings(){
-        if(!isToppingAdded){
-            this.myToppingPrice=isVeg?vegToppingPrice:getNonVegToppingPrice;
-            isToppingAdded=true;
-            this.price+=this.myToppingPrice;
+//        if(!isToppingAdded){
+//            this.myToppingPrice=isVeg?vegToppingPrice:getNonVegToppingPrice;
+//            isToppingAdded=true;
+//            this.price+=this.myToppingPrice;
+//        }
+        if (isToppingAdded == false && isVeg == true) {
+            isToppingAdded = true;
+            this.myToppingPrice = vegToppingPrice;
+            this.price = price + this.myToppingPrice;
+        }
+        if (isToppingAdded == false && isVeg == false) {
+            isToppingAdded= true;
+            this.myToppingPrice = getNonVegToppingPrice;
+            this.price = price + this.myToppingPrice;
         }
         // your code goes here
     }
@@ -56,12 +66,7 @@ public class Pizza {
     }
 
     public String getBill(){
-//        Base Price Of The Pizza: 300
-//        Extra Cheese Added: 80
-//        Extra Toppings Added: 70
-//        Paperbag Added: 20
-//        Total Price: 470
-        String bill="Base Price of pizza: "+this.basePrice+"\n";
+        String bill="Base Price of pizza: "+basePrice+"\n";
         if(isCheeseAdded){
             bill+="Extra Cheese Added: "+cheesePrice+"\n";
         }
