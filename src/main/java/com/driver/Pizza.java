@@ -20,14 +20,14 @@ public class Pizza {
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
         this.basePrice=isVeg?vegBasePrice:nonVegBasePrice;
-        this.price=0;
+        this.price=basePrice;
         this.isCheeseAdded=false;
         this.isToppingAdded=false;
         // your code goes here
     }
 
     public int getPrice(){
-        this.price=basePrice;
+//        this.price=basePrice;
         if(isCheeseAdded){
             this.price+=cheesePrice;
         }
@@ -68,13 +68,13 @@ public class Pizza {
 //        Total Price: 470
         String bill="Base Price of pizza: "+this.basePrice+"\n";
         if(isCheeseAdded){
-            bill+="Extra Cheese Added: "+cheesePrice+"\n";
+            bill+="Extra Cheese Added: "+this.cheesePrice+"\n";
         }
         if(isToppingAdded){
-            bill+="Extra Toppings Added: "+myToppingPrice+"\n";
+            bill+="Extra Toppings Added: "+this.myToppingPrice+"\n";
         }
         if (isTakeAwayAdded){
-            bill+="Paperbag Added: "+takeAwayPrice+"\n";
+            bill+="Paperbag Added: "+this.takeAwayPrice+"\n";
         }
         bill+="Total Price: "+this.price+"\n";
         return bill;
