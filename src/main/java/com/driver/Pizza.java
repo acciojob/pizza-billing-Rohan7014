@@ -51,7 +51,7 @@ public class Pizza {
         }
         if (isToppingAdded == false && isVeg == false) {
             isToppingAdded= true;
-            this.myToppingPrice = nonVegBasePrice;
+            this.myToppingPrice = getNonVegToppingPrice;
             this.price = price + this.myToppingPrice;
         }
     }
