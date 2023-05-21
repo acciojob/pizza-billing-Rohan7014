@@ -19,7 +19,7 @@ public class Pizza {
 
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
-        this.basePrice=isVeg ? vegBasePrice:nonVegBasePrice;
+        this.basePrice=isVeg?vegBasePrice:nonVegBasePrice;
         this.price=0;
         this.isCheeseAdded=false;
         this.isToppingAdded=false;
