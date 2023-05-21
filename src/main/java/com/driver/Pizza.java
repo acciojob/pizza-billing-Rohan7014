@@ -14,29 +14,21 @@ public class Pizza {
     private boolean isToppingAdded;
     private boolean isTakeAwayAdded;
     public static int takeAwayPrice=20;
-    public int myToppingPrice=0;
+    private int myToppingPrice=0;
     private int basePrice=0;
 
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
         this.basePrice=isVeg?vegBasePrice:nonVegBasePrice;
-        this.price=basePrice;
+        this.price=this.basePrice;
+        this.bill="";
         this.isCheeseAdded=false;
         this.isToppingAdded=false;
+        this.isTakeAwayAdded=false;
         // your code goes here
     }
 
     public int getPrice(){
-//        this.price=basePrice;
-        if(isCheeseAdded){
-            this.price+=cheesePrice;
-        }
-        if(isToppingAdded){
-            this.price+=myToppingPrice;
-        }
-        if(isTakeAwayAdded){
-            this.price+=takeAwayPrice;
-        }
         return this.price;
     }
 
@@ -44,12 +36,14 @@ public class Pizza {
         // your code goes here
         if(!isCheeseAdded){
             isCheeseAdded=true;
+            this.price+=cheesePrice;
         }
     }
     public void addExtraToppings(){
         if(!isToppingAdded){
             this.myToppingPrice=isVeg?vegToppingPrice:getNonVegToppingPrice;
             isToppingAdded=true;
+            this.price+=this.myToppingPrice;
         }
         // your code goes here
     }
@@ -57,6 +51,7 @@ public class Pizza {
     public void addTakeaway(){
         if(!isTakeAwayAdded){
             isTakeAwayAdded=true;
+            this.price+=takeAwayPrice;
         }
     }
 
@@ -68,15 +63,16 @@ public class Pizza {
 //        Total Price: 470
         String bill="Base Price of pizza: "+this.basePrice+"\n";
         if(isCheeseAdded){
-            bill+="Extra Cheese Added: "+this.cheesePrice+"\n";
+            bill+="Extra Cheese Added: "+cheesePrice+"\n";
         }
         if(isToppingAdded){
-            bill+="Extra Toppings Added: "+this.myToppingPrice+"\n";
+            bill+="Extra Toppings Added: "+myToppingPrice+"\n";
         }
         if (isTakeAwayAdded){
-            bill+="Paperbag Added: "+this.takeAwayPrice+"\n";
+            bill+="Paperbag Added: "+takeAwayPrice+"\n";
         }
         bill+="Total Price: "+this.price+"\n";
-        return bill;
+        this.bill=bill;
+        return this.bill;
     }
 }
